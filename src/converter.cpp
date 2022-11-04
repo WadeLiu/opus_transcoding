@@ -309,12 +309,7 @@ bool CConverter::convert(const char* input, const char* output)
                         exit(1);
                     }
 
-                    if (frame->nb_samples < audioEncoderContext->frame_size)
-                    {
-                        // fifo
-                        exit(1);
-                    }
-                    else
+                    if (frame->nb_samples != audioEncoderContext->frame_size)
                     {
                         if (swr_get_out_samples(swr_ctx, 0) >= audioEncoderContext->frame_size)
                         {
