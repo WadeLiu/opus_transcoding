@@ -4,14 +4,14 @@
 
 int main (int argc, char* argv[])
 {
-    if (argc != 5)
-    {
-        std::cout << std::endl
-                  << "Usage: transcoding -i input_file -o output_file."
-                  << std::endl << std::endl;
-
-        return 0;
-    }
+    // if (argc != 5)
+    // {
+    //     std::cout << std::endl
+    //               << "Usage: transcoding -i input_file -o output_file."
+    //               << std::endl << std::endl;
+    //
+    //     return 0;
+    // }
 
     auto converter = std::make_unique<CConverter>();
     const char* input = nullptr;

@@ -9,11 +9,14 @@
 
 extern "C"
 {
+#include <libavutil/opt.h>
 #include <libavutil/imgutils.h>
 #include <libavutil/samplefmt.h>
 #include <libavutil/timestamp.h>
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
+#include <libavutil/channel_layout.h>
+#include <libswresample/swresample.h>
 }
 
 //------------------------------------------------------------------------------
@@ -37,5 +40,16 @@ av_always_inline std::string av_ts2timestring(int ts, AVRational* tb) {
 }
 #define av_ts2timestr(ts, tb) av_ts2timestring(ts, tb).c_str()
 #endif  // av_ts2timestr
+
+//------------------------------------------------------------------------------
+
+#ifdef av_ts2str
+#undef av_ts2str
+av_always_inline std::string av_ts2string(int ts) {
+    char av_ts[AV_TS_MAX_STRING_SIZE] = {0};
+    return av_ts_make_string(av_ts, ts);
+}
+#define av_ts2str(ts) av_ts2string(ts).c_str()
+#endif  // av_ts2str
 
 //------------------------------------------------------------------------------

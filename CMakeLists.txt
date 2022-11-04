@@ -1,8 +1,14 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16.3)
 
+SET(CMAKE_BUILD_TYPE "Debug")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+link_directories(/usr/local/lib/)
 
 PROJECT(transcoding)
 
@@ -13,4 +19,4 @@ INCLUDE_DIRECTORIES(
 AUX_SOURCE_DIRECTORY(src DIR_SRCS)
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${DIR_SRCS})
-TARGET_LINK_LIBRARIES(transcoding avformat avcodec avutil pthread)
+TARGET_LINK_LIBRARIES(transcoding avformat avcodec avutil swresample pthread)
