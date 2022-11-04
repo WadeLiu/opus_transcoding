@@ -21,7 +21,7 @@ sudo make install
 ## Build
 
 ```sh
-git clone https://github.com/WadeLiu/videosoft_work.git
+git clone https://github.com/WadeLiu/opus_transcoding.git
 cd videosoft_work
 mkdir build && cd build
 cmake ..
